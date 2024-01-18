@@ -28,6 +28,14 @@ app.MapGet("/pessoas", (PessoasRepository repository) =>
 })
 .WithOpenApi();
 
+app.MapGet("/pessoas/count", (PessoasRepository repository) =>
+{
+    var count = repository.ListarTodos().Count();
+    app.Logger.LogInformation($"No. de pessoas cadastradas = {count}");
+    return count;
+})
+.WithOpenApi();
+
 app.MapPost("/pessoas", (PessoasRepository repository, DadosPessoa pessoa) =>
 {
     repository.Incluir(pessoa);

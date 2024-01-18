@@ -1,0 +1,1 @@
+newman run FakeData.postman_collection.json -n 10
